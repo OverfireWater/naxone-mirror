@@ -294,6 +294,9 @@ def build_manifest() -> None:
             asset = next((a for a in rel.get("assets", []) if a["name"].endswith(".zip")), None)
             if not asset:
                 continue
+            gh_url = asset["browser_download_url"]
+            # jsDelivr 不服务 release asset，必须走 GitHub 代理服务
+            # 按实测速度从快到慢排序，客户端顺序尝试，失败 fallback
             manifest["packages"].setdefault(software, []).append({
                 "version": version,
                 "variant": meta.get("variant"),
@@ -303,8 +306,10 @@ def build_manifest() -> None:
                 "exe_rel": meta.get("exe_rel", ""),
                 "tag": tag,
                 "download_urls": [
-                    f"https://cdn.jsdelivr.net/gh/{REPO}@{tag}/{asset['name']}",
-                    asset["browser_download_url"],
+                    f"https://ghfast.top/{gh_url}",
+                    f"https://ghproxy.net/{gh_url}",
+                    f"https://gh-proxy.com/{gh_url}",
+                    gh_url,  # 兜底：直接 github.com（对挂了好代理的用户也可用）
                 ],
             })
         if len(data) < 100:
