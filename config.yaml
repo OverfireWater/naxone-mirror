@@ -1,0 +1,45 @@
+# 镜像同步配置。
+#
+# php / redis：**不需要配置**，sync.py 会自动从上游拉最新清单
+#   - PHP: https://windows.php.net/downloads/releases/releases.json
+#   - Redis: https://api.github.com/repos/tporadowski/redis/releases
+#
+# apache / nginx：**手动维护版本列表**。原因：
+#   - Apache Lounge 没有机器可读的版本接口，HTML scraping 脆弱
+#   - Nginx 发版稳定且文件名可预测，写死更干净
+#   - 这俩软件发版频率低（nginx 每月 1-2 次、apache 季度），维护成本极低
+#
+# 加版本：在对应节点的 versions 下加一行，commit 推到 main，Actions 自动同步。
+
+apache:
+  versions:
+    - version: "2.4.63"
+      source_url: "https://www.apachelounge.com/download/VS17/binaries/httpd-2.4.63-250207-Win64-VS17.zip"
+      exe_rel: "bin/httpd.exe"
+      variant: "Win64 · VS17"
+    - version: "2.4.62"
+      source_url: "https://www.apachelounge.com/download/VS17/binaries/httpd-2.4.62-240904-Win64-VS17.zip"
+      exe_rel: "bin/httpd.exe"
+      variant: "Win64 · VS17"
+    - version: "2.4.58"
+      source_url: "https://www.apachelounge.com/download/VS17/binaries/httpd-2.4.58-231019-Win64-VS17.zip"
+      exe_rel: "bin/httpd.exe"
+      variant: "Win64 · VS17"
+
+nginx:
+  versions:
+    - version: "1.29.0"
+      source_url: "https://nginx.org/download/nginx-1.29.0.zip"
+      exe_rel: "nginx.exe"
+    - version: "1.27.3"
+      source_url: "https://nginx.org/download/nginx-1.27.3.zip"
+      exe_rel: "nginx.exe"
+    - version: "1.26.2"
+      source_url: "https://nginx.org/download/nginx-1.26.2.zip"
+      exe_rel: "nginx.exe"
+    - version: "1.24.0"
+      source_url: "https://nginx.org/download/nginx-1.24.0.zip"
+      exe_rel: "nginx.exe"
+    - version: "1.22.1"
+      source_url: "https://nginx.org/download/nginx-1.22.1.zip"
+      exe_rel: "nginx.exe"

@@ -99,51 +99,38 @@ def discover_php(cfg: dict) -> list:
 
 
 def discover_nginx(cfg: dict) -> list:
-    url = "https://nginx.org/en/download.html"
-    r = SESS.get(url, timeout=30)
-    r.raise_for_status()
-    versions = sorted(set(re.findall(r"nginx-(\d+\.\d+\.\d+)\.zip", r.text)),
-                      key=_semver_tuple, reverse=True)[:8]
-    exclude = set(cfg.get("exclude_versions") or [])
-    out = []
-    for v in versions:
-        if v in exclude:
-            continue
-        out.append(Pkg(
-            software="nginx",
-            version=v,
-            source_url=f"https://nginx.org/download/nginx-{v}.zip",
-            exe_rel="nginx.exe",
-            category="web",
-        ))
-    return out
+    """从 config.yaml 的 nginx.versions 读列表。"""
+    return _from_config_versions(cfg, software="nginx", category="web")
 
 
 def discover_apache(cfg: dict) -> list:
-    url = "https://www.apachelounge.com/download/"
-    try:
-        r = SESS.get(url, timeout=30)
-        r.raise_for_status()
-    except Exception as e:
-        print(f"[apache] upstream fetch failed: {e}", file=sys.stderr)
+    """从 config.yaml 的 apache.versions 读列表。Apache Lounge 没有
+    机器可读的清单接口，所以手动维护。"""
+    return _from_config_versions(cfg, software="apache", category="web")
+
+
+def _from_config_versions(cfg: dict, software: str, category: str) -> list:
+    versions = cfg.get("versions") or []
+    if not versions:
+        print(f"[{software}] config.yaml 里 versions 未定义，跳过", file=sys.stderr)
         return []
-    m = re.findall(r'href="(VS\d+/binaries/(httpd-(\d+\.\d+\.\d+)[^"]+Win64-VS\d+\.zip))"', r.text)
-    seen = {}
-    for href, filename, ver in m:
-        if ver not in seen:
-            seen[ver] = (href, filename)
-    exclude = set(cfg.get("exclude_versions") or [])
     out = []
-    items = sorted(seen.items(), key=lambda kv: _semver_tuple(kv[0]), reverse=True)[:4]
-    for ver, (href, filename) in items:
-        if ver in exclude:
+    for item in versions:
+        if not item or not isinstance(item, dict):
+            continue
+        ver = item.get("version")
+        src = item.get("source_url")
+        exe = item.get("exe_rel")
+        if not (ver and src and exe):
+            print(f"[{software}] 跳过不完整条目 {item}", file=sys.stderr)
             continue
         out.append(Pkg(
-            software="apache",
+            software=software,
             version=ver,
-            source_url=f"https://www.apachelounge.com/download/{href}",
-            exe_rel="bin/httpd.exe",
-            category="web",
+            source_url=src,
+            exe_rel=exe,
+            variant=item.get("variant"),
+            category=category,
         ))
     return out
 
