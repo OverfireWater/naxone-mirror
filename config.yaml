@@ -13,18 +13,10 @@
 
 apache:
   versions:
-    - version: "2.4.63"
-      source_url: "https://www.apachelounge.com/download/VS17/binaries/httpd-2.4.63-250207-Win64-VS17.zip"
+    - version: "2.4.66"
+      source_url: "https://www.apachelounge.com/download/VS18/binaries/httpd-2.4.66-260223-Win64-VS18.zip"
       exe_rel: "bin/httpd.exe"
-      variant: "Win64 · VS17"
-    - version: "2.4.62"
-      source_url: "https://www.apachelounge.com/download/VS17/binaries/httpd-2.4.62-240904-Win64-VS17.zip"
-      exe_rel: "bin/httpd.exe"
-      variant: "Win64 · VS17"
-    - version: "2.4.58"
-      source_url: "https://www.apachelounge.com/download/VS17/binaries/httpd-2.4.58-231019-Win64-VS17.zip"
-      exe_rel: "bin/httpd.exe"
-      variant: "Win64 · VS17"
+      variant: "Win64 · VS18"
 
 nginx:
   versions:
