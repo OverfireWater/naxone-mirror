@@ -23,6 +23,7 @@ from urllib.parse import urlparse
 
 import requests
 import yaml
+import zipfile
 
 REPO = os.environ.get("GITHUB_REPO") or ""
 TOKEN = os.environ.get("GITHUB_TOKEN") or ""
@@ -248,6 +249,19 @@ def download_and_hash(url: str, dest: Path):
                     total += len(chunk)
     return h.hexdigest(), total
 
+def validate_zip_payload(path: Path) -> None:
+    size = path.stat().st_size
+    if size < 1024:
+        raise ValueError(f"下载文件过小，疑似错误页: {size} bytes")
+    with open(path, "rb") as f:
+        head = f.read(4)
+    if head != b"PK\x03\x04":
+        preview = path.read_bytes()[:160].decode("utf-8", errors="ignore").replace("\n", " ")
+        raise ValueError(f"下载结果不是 ZIP 文件（magic={head!r}）: {preview}")
+    with zipfile.ZipFile(path, "r") as zf:
+        bad = zf.testzip()
+        if bad is not None:
+            raise ValueError(f"ZIP 损坏，首个异常条目: {bad}")
 
 def build_manifest() -> None:
     manifest = {
@@ -363,6 +377,7 @@ def main() -> int:
             zip_path = td_path / pkg.filename
             try:
                 sha, size = download_and_hash(pkg.source_url, zip_path)
+                validate_zip_payload(zip_path)
             except Exception as e:
                 print(f"  download failed: {e}", file=sys.stderr)
                 continue

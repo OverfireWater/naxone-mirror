@@ -17,6 +17,7 @@ on:
     paths:
       - "config.yaml"
       - "scripts/sync.py"
+      - ".github/workflows/mirror.yml"
 
 concurrency:
   group: mirror
@@ -46,8 +47,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPO: ${{ github.repository }}
-          FORCE: ${{ github.event.inputs.force || 'false' }}
-          ONLY: ${{ github.event.inputs.only_software || '' }}
+          FORCE: ${{ github.event_name == 'push' && 'true' || github.event.inputs.force || 'false' }}
+          ONLY: ${{ github.event_name == 'push' && 'apache' || github.event.inputs.only_software || '' }}
         run: python scripts/sync.py
 
       - name: Commit updated manifest
