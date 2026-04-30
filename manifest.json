@@ -1,11 +1,45 @@
 {
-  "generated_at": "2026-04-30T08:24:07Z",
+  "generated_at": "2026-04-30T08:39:44Z",
   "repo": "OverfireWater/naxone-mirror",
   "packages": {
+    "nvm": [
+      {
+        "version": "1.2.2",
+        "variant": "noinstall",
+        "filename": "nvm-1.2.2.zip",
+        "size_bytes": 2952850,
+        "sha256": "a2e5027a8cec44e42627add880bbaba16f9f1f1a701f4093d4a8d51a7bf94cf5",
+        "exe_rel": "nvm.exe",
+        "tag": "nvm-1.2.2",
+        "download_urls": [
+          "https://ghfast.top/https://github.com/OverfireWater/naxone-mirror/releases/download/nvm-1.2.2/nvm-1.2.2.zip",
+          "https://ghproxy.net/https://github.com/OverfireWater/naxone-mirror/releases/download/nvm-1.2.2/nvm-1.2.2.zip",
+          "https://gh-proxy.com/https://github.com/OverfireWater/naxone-mirror/releases/download/nvm-1.2.2/nvm-1.2.2.zip",
+          "https://github.com/OverfireWater/naxone-mirror/releases/download/nvm-1.2.2/nvm-1.2.2.zip"
+        ]
+      }
+    ],
+    "composer": [
+      {
+        "version": "2.9.7",
+        "variant": "stable",
+        "filename": "composer-2.9.7.zip",
+        "size_bytes": 787945,
+        "sha256": "8f86ccc2cbcd13f6ddde2a13680a944779054a940194648e24537ea47b83f59b",
+        "exe_rel": "composer.phar",
+        "tag": "composer-2.9.7",
+        "download_urls": [
+          "https://ghfast.top/https://github.com/OverfireWater/naxone-mirror/releases/download/composer-2.9.7/composer-2.9.7.zip",
+          "https://ghproxy.net/https://github.com/OverfireWater/naxone-mirror/releases/download/composer-2.9.7/composer-2.9.7.zip",
+          "https://gh-proxy.com/https://github.com/OverfireWater/naxone-mirror/releases/download/composer-2.9.7/composer-2.9.7.zip",
+          "https://github.com/OverfireWater/naxone-mirror/releases/download/composer-2.9.7/composer-2.9.7.zip"
+        ]
+      }
+    ],
     "apache": [
       {
         "version": "2.4.66",
-        "variant": "Win64 路 VS18",
+        "variant": "Win64 · VS18",
         "filename": "httpd-2.4.66-260223-Win64-VS18.zip",
         "size_bytes": 12390388,
         "sha256": "422d311b9903d3bd39d3144ab558af3ce822826e7b68e2a9d01ec0854f6a920b",
@@ -382,40 +416,6 @@
           "https://ghproxy.net/https://github.com/OverfireWater/naxone-mirror/releases/download/nginx-1.18.0/nginx-1.18.0.zip",
           "https://gh-proxy.com/https://github.com/OverfireWater/naxone-mirror/releases/download/nginx-1.18.0/nginx-1.18.0.zip",
           "https://github.com/OverfireWater/naxone-mirror/releases/download/nginx-1.18.0/nginx-1.18.0.zip"
-        ]
-      }
-    ],
-    "composer": [
-      {
-        "version": "2.9.7",
-        "variant": "stable",
-        "filename": "composer-2.9.7.zip",
-        "size_bytes": 787945,
-        "sha256": "8f86ccc2cbcd13f6ddde2a13680a944779054a940194648e24537ea47b83f59b",
-        "exe_rel": "composer.phar",
-        "tag": "composer-2.9.7",
-        "download_urls": [
-          "https://ghfast.top/https://github.com/OverfireWater/naxone-mirror/releases/download/composer-2.9.7/composer-2.9.7.zip",
-          "https://ghproxy.net/https://github.com/OverfireWater/naxone-mirror/releases/download/composer-2.9.7/composer-2.9.7.zip",
-          "https://gh-proxy.com/https://github.com/OverfireWater/naxone-mirror/releases/download/composer-2.9.7/composer-2.9.7.zip",
-          "https://github.com/OverfireWater/naxone-mirror/releases/download/composer-2.9.7/composer-2.9.7.zip"
-        ]
-      }
-    ],
-    "nvm": [
-      {
-        "version": "1.2.2",
-        "variant": "noinstall",
-        "filename": "nvm-1.2.2.zip",
-        "size_bytes": 2952850,
-        "sha256": "a2e5027a8cec44e42627add880bbaba16f9f1f1a701f4093d4a8d51a7bf94cf5",
-        "exe_rel": "nvm.exe",
-        "tag": "nvm-1.2.2",
-        "download_urls": [
-          "https://ghfast.top/https://github.com/OverfireWater/naxone-mirror/releases/download/nvm-1.2.2/nvm-1.2.2.zip",
-          "https://ghproxy.net/https://github.com/OverfireWater/naxone-mirror/releases/download/nvm-1.2.2/nvm-1.2.2.zip",
-          "https://gh-proxy.com/https://github.com/OverfireWater/naxone-mirror/releases/download/nvm-1.2.2/nvm-1.2.2.zip",
-          "https://github.com/OverfireWater/naxone-mirror/releases/download/nvm-1.2.2/nvm-1.2.2.zip"
         ]
       }
     ]
