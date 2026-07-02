@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T06:38:16Z",
+  "generated_at": "2026-07-02T06:04:33Z",
   "repo": "OverfireWater/naxone-mirror",
   "packages": {
     "php": [
@@ -151,6 +151,21 @@
           "https://ghproxy.net/https://github.com/OverfireWater/naxone-mirror/releases/download/php-8.3.30/php-8.3.30-nts-Win32-vs16-x64.zip",
           "https://gh-proxy.com/https://github.com/OverfireWater/naxone-mirror/releases/download/php-8.3.30/php-8.3.30-nts-Win32-vs16-x64.zip",
           "https://github.com/OverfireWater/naxone-mirror/releases/download/php-8.3.30/php-8.3.30-nts-Win32-vs16-x64.zip"
+        ]
+      },
+      {
+        "version": "8.2.32",
+        "variant": "x64-NTS vs16",
+        "filename": "php-8.2.32-nts-Win32-vs16-x64.zip",
+        "size_bytes": 33235159,
+        "sha256": "44e561948d6e336ac91cba3e59f074b687e22d9ceb824056f28ed8dfbbfdbe35",
+        "exe_rel": "php-cgi.exe",
+        "tag": "php-8.2.32",
+        "download_urls": [
+          "https://ghfast.top/https://github.com/OverfireWater/naxone-mirror/releases/download/php-8.2.32/php-8.2.32-nts-Win32-vs16-x64.zip",
+          "https://ghproxy.net/https://github.com/OverfireWater/naxone-mirror/releases/download/php-8.2.32/php-8.2.32-nts-Win32-vs16-x64.zip",
+          "https://gh-proxy.com/https://github.com/OverfireWater/naxone-mirror/releases/download/php-8.2.32/php-8.2.32-nts-Win32-vs16-x64.zip",
+          "https://github.com/OverfireWater/naxone-mirror/releases/download/php-8.2.32/php-8.2.32-nts-Win32-vs16-x64.zip"
         ]
       },
       {
